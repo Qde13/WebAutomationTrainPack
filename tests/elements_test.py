@@ -1,10 +1,10 @@
 import time
 
-from pages.elements_page import TextBoxPage
+from pages.elements_page import TextBoxPage, CheckBoxPage
+
 
 class TestElements:
     class TestTextBox:
-
         def test_text_box(self, driver):
             text_box_page = TextBoxPage(driver, 'https://demoqa.com/text-box')
             text_box_page.open()
@@ -16,6 +16,11 @@ class TestElements:
             assert permanent_address.replace('\n', ' ') == output_per_addr, "the permanent address does not match"
 
 
-
-
+    class TestCheckBox:
+        def test_check_box(self, driver):
+            check_box_page = CheckBoxPage(driver, 'https://demoqa.com/checkbox')
+            check_box_page.open()
+            check_box_page.open_full_list()
+            check_box_page.click_random_checkbox()
+            time.sleep(5)
 
