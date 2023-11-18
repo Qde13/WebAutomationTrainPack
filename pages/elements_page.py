@@ -64,24 +64,30 @@ class CheckBoxPage(BasePage):
 
 
 class RadioButtonPage(BasePage):
-
     locators = RadioButtonPageLocators()
 
-    def click_radio_buttons(self):
-        radio_buttons = self.elements_are_present(self.locators.RADIO_BUTTONS)
-        for item in radio_buttons[:1]:
-            item.find_element('xpath', self.locators.RADIO_BUTTONS_TEXT).click()
+    def click_on_the_radio_button(self, choice):
+        choices = {'yes': self.locators.YES_BUTTON,
+                   'impressive': self.locators.IMPRESSIVE_BUTTON,
+                   'no': self.locators.NO_BUTTON}
 
-    def get_radio_buttons_name(self):
-        radio_buttons = self.elements_are_present(self.locators.RADIO_BUTTONS)
-        data = []
-        for item in radio_buttons:
-            text = item.find_element('xpath', self.locators.RADIO_BUTTONS_TEXT).text
-            data.append(text)
-        return str(data)
+        self.element_is_visible(choices[choice]).click()
+
+    """
+    methods not in use now
+    def click_yes_radio_button(self):
+        yes_radio = self.element_is_visible(self.locators.YES_BUTTON)
+        yes_radio.click()
+
+    def click_impressive_radio_button(self):
+        impressive_radio = self.element_is_visible(self.locators.IMPRESSIVE_BUTTON)
+        impressive_radio.click()
+
+    def click_no_radio_button(self):
+        no_radio = self.element_is_visible(self.locators.NO_BUTTON)
+        no_radio.click()
+    """
 
     def get_output_text(self):
         date = self.element_is_visible(self.locators.OUTPUT_RESULT)
         return str(date.text)
-
-
