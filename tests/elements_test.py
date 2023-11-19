@@ -1,6 +1,7 @@
+import random
 import time
 
-from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage
+from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage
 
 
 class TestElements:
@@ -15,7 +16,6 @@ class TestElements:
             assert current_address.replace('\n', ' ') == output_cur_addr, "the current address does not match"
             assert permanent_address.replace('\n', ' ') == output_per_addr, "the permanent address does not match"
 
-
     class TestCheckBox:
         def test_check_box(self, driver):
             check_box_page = CheckBoxPage(driver, 'https://demoqa.com/checkbox')
@@ -27,7 +27,6 @@ class TestElements:
             print(f"input: {input_checkbox}")
             print(f"output: {output_result}")
             assert input_checkbox == output_result, "checkboxes have not been selected"
-
 
     class TestRadioButton:
         def test_radio_button(self, driver):
@@ -43,6 +42,23 @@ class TestElements:
             assert output_impressive == 'Impressive', "Radio button is not clickable, or output is wrong"
             assert output_no == "No", "Radio button is not clickable, or output is wrong"
 
+    class TestWebTable:
+        def test_web_table_add_person(self, driver):
+            web_table_page = WebTablePage(driver, 'https://demoqa.com/webtables')
+            web_table_page.open()
+            new_persons = web_table_page.add_new_persons()  # add 4 new random persons to the table
+            table_result = web_table_page.table_result()
+            print(new_persons)
+            print(table_result)
+            for item in new_persons:
+                assert item in table_result
 
+        def test_web_table_search_person(self, driver):
+            web_table_page = WebTablePage(driver, 'https://demoqa.com/webtables')
+            web_table_page.open()
+            random_key_word = web_table_page.add_new_persons()[random.randint(0, 3)][random.randint(0, 5)]
+            web_table_page.search_some_person(random_key_word)
+            table_result = web_table_page.check_searched_person()
+            assert random_key_word in table_result, "The person was not found in the table"
 
 
