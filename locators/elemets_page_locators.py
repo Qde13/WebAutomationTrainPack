@@ -36,8 +36,9 @@ class RadioButtonPageLocators:
 
 class WebTablePageLocators:
 
-    # Add person form
+    # Add and Edit person form
     ADD_BUTTON = (By.CSS_SELECTOR, "button[id='addNewRecordButton']")
+    EDIT_BUTTON = (By.CSS_SELECTOR, "span[title='Edit']")
     FIRST_NAME = (By.CSS_SELECTOR, "#firstName")
     LAST_NAME = (By.CSS_SELECTOR, "#lastName")
     EMAIL = (By.CSS_SELECTOR, "#userEmail")
@@ -51,6 +52,9 @@ class WebTablePageLocators:
     SEARCH_INPUT = (By.CSS_SELECTOR, "#searchBox")
     DELETE_BUTTON = (By.CSS_SELECTOR, "span[title='Delete']")
     ROW_PARENT = ".//ancestor::div[@class='rt-tr-group']"
+
+
+
 
 
 

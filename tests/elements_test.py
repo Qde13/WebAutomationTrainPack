@@ -61,4 +61,11 @@ class TestElements:
             table_result = web_table_page.check_searched_person()
             assert random_key_word in table_result, "The person was not found in the table"
 
-
+        def test_web_table_edit_person(self, driver):
+            web_table_page = WebTablePage(driver, 'https://demoqa.com/webtables')
+            web_table_page.open()
+            random_person = web_table_page.add_new_persons()[random.randint(0, 3)][random.randint(0, 5)]
+            web_table_page.search_some_person(random_person)
+            age = web_table_page.edit_person_info()
+            row = web_table_page.check_searched_person()
+            assert age in row
