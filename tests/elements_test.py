@@ -68,4 +68,14 @@ class TestElements:
             web_table_page.search_some_person(random_person)
             age = web_table_page.edit_person_info()
             row = web_table_page.check_searched_person()
-            assert age in row
+            assert age in row, "The person card has not been changed"
+
+        def test_web_table_delete_person(self, driver):
+            web_table_page = WebTablePage(driver, 'https://demoqa.com/webtables')
+            web_table_page.open()
+            random_person = web_table_page.add_new_persons()[random.randint(0, 3)][random.randint(0, 5)]
+            web_table_page.search_some_person(random_person)
+            web_table_page.delete_all_persons()
+            time.sleep(5)
+            no_rows_found = web_table_page.check_that_table_is_empty()
+            assert no_rows_found == "No rows found", "The table is not empty"

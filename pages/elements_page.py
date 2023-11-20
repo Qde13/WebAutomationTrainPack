@@ -144,3 +144,12 @@ class WebTablePage(BasePage):
         self.element_is_visible(self.locators.AGE).send_keys(age)
         self.element_is_visible(self.locators.SUBMIT_BUTTON).click()
         return str(age)
+
+    def delete_all_persons(self):
+        persons = self.elements_are_visible(self.locators.DELETE_BUTTON)
+        for item in persons:
+            self.element_is_visible(self.locators.DELETE_BUTTON).click()
+
+    def check_that_table_is_empty(self):
+        no_rows_found = self.element_is_visible(self.locators.EMPTY_TABLE)
+        return str(no_rows_found.text)
