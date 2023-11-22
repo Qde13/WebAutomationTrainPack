@@ -53,6 +53,7 @@ class WebTablePageLocators:
     DELETE_BUTTON = (By.CSS_SELECTOR, "span[title='Delete']")
     ROW_PARENT = ".//ancestor::div[@class='rt-tr-group']"
     EMPTY_TABLE = (By.CSS_SELECTOR, "div.rt-noData")
+    ROW_COUNT = (By.CSS_SELECTOR, "select[aria-label='rows per page']")
 
 
 

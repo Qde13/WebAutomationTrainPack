@@ -79,3 +79,9 @@ class TestElements:
             time.sleep(5)
             no_rows_found = web_table_page.check_that_table_is_empty()
             assert no_rows_found == "No rows found", "The table is not empty"
+
+        def test_web_table_change_row_count(self, driver):
+            web_table_page = WebTablePage(driver, 'https://demoqa.com/webtables')
+            web_table_page.open()
+            count = web_table_page.switch_number_of_rows()
+            assert count == [5, 10, 20, 25, 50, 100]
