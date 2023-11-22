@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 
 from generator.genereator import generated_person
 from locators.elemets_page_locators import TextBoxPageLocators, CheckBoxPageLocators, RadioButtonPageLocators, \
-    WebTablePageLocators
+    WebTablePageLocators, ButtonsPageLocators
 from pages.base_page import BasePage
 
 
@@ -169,3 +169,22 @@ class WebTablePage(BasePage):
         list_rows = self.elements_are_present(self.locators.FULL_PEOPLE_LIST)
         return len(list_rows)
 
+
+class ButtonsPage(BasePage):
+    locators = ButtonsPageLocators()
+
+    def check_double_click(self):
+        button = self.element_is_visible(self.locators.DOUBLE_CLICK_BUTTON)
+        self.action_double_click(button)
+        data = self.element_is_visible(self.locators.DOUBLE_CLICK_BUTTON_MESSAGE).text
+        return str(data)
+
+    def check_right_click(self):
+        self.action_right_click(self.element_is_visible(self.locators.RIGHT_CLICK_BUTTON))
+        data = self.element_is_visible(self.locators.RIGHT_CLICK_BUTTON_MESSAGE).text
+        return str(data)
+
+    def check_click(self):
+        self.element_is_visible(self.locators.CLICK_BUTTON).click()
+        data = self.element_is_visible(self.locators.CLICK_BUTTON_MESSAGE).text
+        return str(data)
