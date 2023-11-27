@@ -68,3 +68,7 @@ class ButtonsPageLocators:
     CLICK_BUTTON_MESSAGE = (By.CSS_SELECTOR, "#dynamicClickMessage")
 
 
+class LinksPageLocators:
+    SIMPLE_LINK = (By.CSS_SELECTOR, "#simpleLink")
+    BAD_REQUEST = (By.CSS_SELECTOR, "#bad-request")
+

@@ -1,11 +1,12 @@
 import random
 import time
 
-from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage
+from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage, LinksPage
 
 
 class TestElements:
     class TestTextBox:
+
         def test_text_box(self, driver):
             text_box_page = TextBoxPage(driver, 'https://demoqa.com/text-box')
             text_box_page.open()
@@ -17,6 +18,7 @@ class TestElements:
             assert permanent_address.replace('\n', ' ') == output_per_addr, "the permanent address does not match"
 
     class TestCheckBox:
+
         def test_check_box(self, driver):
             check_box_page = CheckBoxPage(driver, 'https://demoqa.com/checkbox')
             check_box_page.open()
@@ -29,6 +31,7 @@ class TestElements:
             assert input_checkbox == output_result, "checkboxes have not been selected"
 
     class TestRadioButton:
+
         def test_radio_button(self, driver):
             radio_button_page = RadioButtonPage(driver, 'https://demoqa.com/radio-button')
             radio_button_page.open()
@@ -43,6 +46,7 @@ class TestElements:
             assert output_no == "No", "Radio button is not clickable, or output is wrong"
 
     class TestWebTable:
+
         def test_web_table_add_person(self, driver):
             web_table_page = WebTablePage(driver, 'https://demoqa.com/webtables')
             web_table_page.open()
@@ -88,6 +92,7 @@ class TestElements:
                              100], 'The number of rows in the table has not been changed or has changed incorrectly'
 
     class TestButtons:
+
         def test_doubleclick_button(self, driver):
             buttons_page = ButtonsPage(driver, "https://demoqa.com/buttons")
             buttons_page.open()
@@ -105,3 +110,17 @@ class TestElements:
             buttons_page.open()
             click = buttons_page.check_click()
             assert click == 'You have done a dynamic click', "The dynamic click was not pressed"
+
+    class TestLinksPage:
+
+        def test_check_link(self, driver):
+            links_page = LinksPage(driver, "https://demoqa.com/links")
+            links_page.open()
+            href_link, current_url = links_page.check_new_tab_simple_link()
+            assert href_link == current_url, "New window with link address isn't opened"
+
+        def test_broken_link(self, driver):
+            links_page = LinksPage(driver, "https://demoqa.com/links")
+            links_page.open()
+            response_code = links_page.check_broken_link()
+            assert response_code == 400, "Link isn't broken"
