@@ -1,4 +1,4 @@
-from pages.alert_frame_windows_page import BrowserWindowsPage
+from pages.alert_frame_windows_page import BrowserWindowsPage, AlertPage
 
 
 class TestAlertsFrameWindows:
@@ -15,3 +15,7 @@ class TestAlertsFrameWindows:
             result = browser_windows_page.check_new_window()
             assert result == "This is a sample page"
 
+    class TestAlerts:
+        def test_alert_appear(self, driver):
+            alert_page = AlertPage(driver, "https://demoqa.com/alerts")
+            alert_page.open()
