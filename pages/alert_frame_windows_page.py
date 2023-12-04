@@ -1,12 +1,11 @@
 import random
 import time
 
-from locators.alert_frame_windows_locators import BrowserWindowsPageLocators, AlertPageLocators
+from locators.alert_frame_windows_locators import BrowserWindowsPageLocators, AlertPageLocators, FramePageLocators
 from pages.base_page import BasePage
 
 
 class BrowserWindowsPage(BasePage):
-
     locators = BrowserWindowsPageLocators()
 
     def check_new_tab(self):
@@ -23,7 +22,6 @@ class BrowserWindowsPage(BasePage):
 
 
 class AlertPage(BasePage):
-
     locators = AlertPageLocators()
 
     def check_alert_appear(self):
@@ -63,3 +61,23 @@ class AlertPage(BasePage):
         alert_window.accept()
         result = self.element_is_visible(self.locators.PROMPT_BOX_RESULT)
         return text, result.text
+
+
+class FramePage(BasePage):
+    locators = FramePageLocators()
+
+    def check_frames_by_index(self, index=int):
+        if index == 1:
+            frame = self.element_is_visible(self.locators.FIRST_FRAME)
+            w, h = frame.get_attribute('width'), frame.get_attribute('height')
+            self.driver.switch_to.frame(frame)
+            text = self.element_is_present(self.locators.FRAMES_HEADING).text
+            return [text, w, h]
+        elif index == 2:
+            frame = self.element_is_visible(self.locators.SECOND_FRAME)
+            w, h = frame.get_attribute('width'), frame.get_attribute('height')
+            self.driver.switch_to.frame(frame)
+            text = self.element_is_present(self.locators.FRAMES_HEADING).text
+            return [text, w, h]
+        else:
+            return "Choose 1 or 2"

@@ -20,3 +20,11 @@ class AlertPageLocators:
     # Results text fields
     CONFIRM_BOX_RESULT = (By.CSS_SELECTOR, "#confirmResult")
     PROMPT_BOX_RESULT = (By.CSS_SELECTOR, "#promptResult")
+
+
+class FramePageLocators:
+
+    FIRST_FRAME = (By.CSS_SELECTOR, "iframe#frame1")
+    SECOND_FRAME = (By.CSS_SELECTOR, "iframe#frame2")
+
+    FRAMES_HEADING = (By.CSS_SELECTOR, "#sampleHeading")
