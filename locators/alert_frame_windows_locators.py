@@ -11,9 +11,12 @@ class BrowserWindowsPageLocators:
 
 class AlertPageLocators:
 
+    # Alert buttons
     AlERT_APPEAR_BUTTON = (By.CSS_SELECTOR, "#alertButton")
     ALERT_APPEAR_AFTER_FIVE_SEC_BUTTON = (By.CSS_SELECTOR, "#timerAlertButton")
     CONFIRM_BOX_BUTTON = (By.CSS_SELECTOR, "#confirmButton")
     PROMPT_BOX_BUTTON = (By.CSS_SELECTOR, "#promtButton")
 
-
+    # Results text fields
+    CONFIRM_BOX_RESULT = (By.CSS_SELECTOR, "#confirmResult")
+    PROMPT_BOX_RESULT = (By.CSS_SELECTOR, "#promptResult")

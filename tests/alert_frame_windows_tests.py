@@ -19,3 +19,29 @@ class TestAlertsFrameWindows:
         def test_alert_appear(self, driver):
             alert_page = AlertPage(driver, "https://demoqa.com/alerts")
             alert_page.open()
+            alert_text = alert_page.check_alert_appear()
+            assert alert_text == "You clicked a button"
+
+        def test_alert_appear_after_five_sec(self, driver):
+            alert_page = AlertPage(driver, "https://demoqa.com/alerts")
+            alert_page.open()
+            alert_text = alert_page.check_alert_appear_five_sec()
+            assert alert_text == "This alert appeared after 5 seconds"
+
+        def test_confirm_confirmation_alert(self, driver):
+            alert_page = AlertPage(driver, "https://demoqa.com/alerts")
+            alert_page.open()
+            alert_result = alert_page.check_accept_confirm_alert()
+            assert alert_result == "You selected Ok"
+
+        def test_cancel_confirmation_alert(self, driver):
+            alert_page = AlertPage(driver, "https://demoqa.com/alerts")
+            alert_page.open()
+            alert_result = alert_page.check_cancel_confirm_alert()
+            assert alert_result == "You selected Cancel"
+
+        def test_prompt_alert(self, driver):
+            alert_page = AlertPage(driver, "https://demoqa.com/alerts")
+            alert_page.open()
+            text, prompt_result = alert_page.check_prompt_alert()
+            assert prompt_result == f"You entered {text}"
