@@ -1,7 +1,8 @@
 import random
 import time
 
-from locators.alert_frame_windows_locators import BrowserWindowsPageLocators, AlertPageLocators, FramePageLocators
+from locators.alert_frame_windows_locators import BrowserWindowsPageLocators, AlertPageLocators, FramePageLocators, \
+    NestedFramePageLocators
 from pages.base_page import BasePage
 
 
@@ -81,3 +82,24 @@ class FramePage(BasePage):
             return [text, w, h]
         else:
             return "Choose 1 or 2"
+
+
+class NestedFramePage(BasePage):
+    locators = NestedFramePageLocators()
+
+    def check_nested_frame(self):
+        frames = [self.locators.PARENT_FRAME, self.locators.CHILD_FRAME]
+        texts = [self.locators.PARENT_TEXT, self.locators.CHILD_TEXT]
+        output = []
+        i = 0
+        for f in frames:
+            self.driver.switch_to.frame(self.element_is_present(f))
+            text = self.element_is_present(texts[i]).text
+            output.append(text)
+            i = i + 1
+        return output
+
+
+
+
+
