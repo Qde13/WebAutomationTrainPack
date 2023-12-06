@@ -1,4 +1,4 @@
-from pages.alert_frame_windows_page import BrowserWindowsPage, AlertPage, FramePage, NestedFramePage
+from pages.alert_frame_windows_page import BrowserWindowsPage, AlertPage, FramePage, NestedFramePage, ModelDialogPage
 
 
 class TestAlertsFrameWindows:
@@ -68,5 +68,21 @@ class TestAlertsFrameWindows:
             output = nested_frame.check_nested_frame()
             assert output == ["Parent frame", "Child Iframe"], "The Frame doesn't exist, or result was different"
 
+    class TestModelDialog:
+        def test_small_model_dialog(self, driver):
+            model_dialog = ModelDialogPage(driver, "https://demoqa.com/modal-dialogs")
+            model_dialog.open()
+            model_dialog.open_small_dialog()
+            header, body = model_dialog.get_model_header_body_text()
+            model_dialog.close_small_dialog()
+            assert header == "Small Modal", "Modal isn't open, or header is different"
+            assert len(body) <= 55, "Body is longer then 55 chars"
 
-
+        def test_large_model_dialog(self, driver):
+            model_dialog = ModelDialogPage(driver, "https://demoqa.com/modal-dialogs")
+            model_dialog.open()
+            model_dialog.open_large_dialog()
+            header, body = model_dialog.get_model_header_body_text()
+            model_dialog.close_large_dialog()
+            assert header == "Large Modal", "Modal isn't open, or header is different"
+            assert len(body) >= 55, "Body is shorter then 55 chars"

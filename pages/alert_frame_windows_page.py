@@ -2,7 +2,7 @@ import random
 import time
 
 from locators.alert_frame_windows_locators import BrowserWindowsPageLocators, AlertPageLocators, FramePageLocators, \
-    NestedFramePageLocators
+    NestedFramePageLocators, ModelDialogPageLocators
 from pages.base_page import BasePage
 
 
@@ -100,6 +100,25 @@ class NestedFramePage(BasePage):
         return output
 
 
+class ModelDialogPage(BasePage):
+    locators = ModelDialogPageLocators()
+
+    def open_small_dialog(self):
+        self.element_is_present(self.locators.SMALL_MODEL_BUTTON).click()
+
+    def open_large_dialog(self):
+        self.element_is_present(self.locators.LARGE_MODEL_BUTTON).click()
+
+    def close_small_dialog(self):
+        self.element_is_visible(self.locators.CLOSE_SMALL_MODEL).click()
+
+    def close_large_dialog(self):
+        self.element_is_visible(self.locators.CLOSE_LARGE_MODEL).click()
+
+    def get_model_header_body_text(self):
+        header_text, body_text = (self.element_is_visible(self.locators.MODEL_HEADER).text,
+                                  self.element_is_visible(self.locators.MODEL_BODY).text)
+        return header_text, body_text
 
 
 
