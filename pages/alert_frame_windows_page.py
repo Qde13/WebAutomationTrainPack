@@ -119,6 +119,3 @@ class ModelDialogPage(BasePage):
         header_text, body_text = (self.element_is_visible(self.locators.MODEL_HEADER).text,
                                   self.element_is_visible(self.locators.MODEL_BODY).text)
         return header_text, body_text
-
-
-

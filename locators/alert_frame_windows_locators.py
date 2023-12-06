@@ -48,5 +48,3 @@ class ModelDialogPageLocators:
     # Text
     MODEL_HEADER = (By.CSS_SELECTOR, "div[class='modal-title h4']")
     MODEL_BODY = (By.CSS_SELECTOR, ".modal-body")
-
-
