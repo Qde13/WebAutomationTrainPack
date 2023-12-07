@@ -1,4 +1,4 @@
-from pages.widget_page import AccordianPage
+from pages.widget_page import AccordianPage, AutocompletePage
 
 
 class TestWidgets:
@@ -34,3 +34,30 @@ class TestWidgets:
             third_title, third_content = accordian_page.check_accordian_by_index(3)
             assert third_title == "Why do we use it?" and len(third_content) > 0, \
                 "Accordion is not present or not open"
+
+    class TestAutocomplete:
+
+        def test_fill_multi_autocomplete(self, driver):
+            autocomplete_page = AutocompletePage(driver, "https://demoqa.com/auto-complete")
+            autocomplete_page.open()
+            colors = autocomplete_page.fill_input_multi_with_random_colors()
+            colors_result = autocomplete_page.check_color_in_multy()
+            assert colors == colors_result, "The Multiple Autocomplete isn't filled, or content was different"
+
+        def test_remove_element_from_multi_autocomplete(self, driver):
+            autocomplete_page = AutocompletePage(driver, "https://demoqa.com/auto-complete")
+            autocomplete_page.open()
+            autocomplete_page.fill_input_multi_with_random_colors()
+            value_before, value_after = autocomplete_page.remove_one_value_form_multy()
+            assert value_before == value_after + 1, "The element from Multiple Autocomplete isn't deleted"
+
+        def test_single_autocomplete(self, driver):
+            autocomplete_page = AutocompletePage(driver, "https://demoqa.com/auto-complete")
+            autocomplete_page.open()
+            color = autocomplete_page.fill_input_single_with_random_color()
+            output = autocomplete_page.check_color_in_single()
+            assert color == output, "The Single Autocomplete isn't filled, or content was different"
+
+
+
+

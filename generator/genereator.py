@@ -1,6 +1,6 @@
 import random
 
-from data.data import Person
+from data.data import Person, Color
 from faker import Faker
 
 faker_en = Faker('en')
@@ -23,8 +23,14 @@ def generated_person():
 
 
 def generated_file():
-    filepath = rf"D:\PythonProjects\WebAutomationTrainPack\testfile{random.randint(0,999)}.txt"
+    filepath = rf"D:\PythonProjects\WebAutomationTrainPack\testfile{random.randint(0, 999)}.txt"
     file = open(filepath, "w+")
     file.write("some text")
     file.close()
     return filepath
+
+
+def generated_color():
+    yield Color(
+        color_name=["Blue", "Green", "Yellow", "Purple", "Black", "White", "Voilet", "Indigo", "Magenta", "Aqua"]
+    )
