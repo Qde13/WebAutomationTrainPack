@@ -19,3 +19,18 @@ class AutocompletePageLocators:
     SINGLE_INPUT = (By.CSS_SELECTOR, "input#autoCompleteSingleInput")
     SINGLE_VALUE = (By.CSS_SELECTOR, "div[class='auto-complete__single-value css-1uccc91-singleValue']")
 
+
+class DatePickerPageLocators:
+    DATE_INPUT = (By.CSS_SELECTOR, "#datePickerMonthYearInput")
+    DATE_SELECT_MONTH = (By.CSS_SELECTOR, "select.react-datepicker__month-select")
+    DATE_SELECT_YEAR = (By.CSS_SELECTOR, "select.react-datepicker__year-select")
+
+    # Day list selector works for both date and date&time pickers
+    DATE_SELECT_DAY_LIST = (By.CSS_SELECTOR, "div[class^='react-datepicker__day react-datepicker__day']")
+
+    DATE_TIME_INPUT = (By.CSS_SELECTOR, "#dateAndTimePickerInput")
+    DATE_TIME_SELECT_MONTH = (By.CSS_SELECTOR, "div.react-datepicker__month-read-view")
+    DATE_TIME_SELECT_YEAR = (By.CSS_SELECTOR, "div.react-datepicker__year-read-view")
+    DATE_TIME_SELECT_MONTH_LIST = (By.CSS_SELECTOR, "div.react-datepicker__month-option")
+    DATE_TIME_SELECT_YEAR_LIST = (By.CSS_SELECTOR, "div.react-datepicker__year-option")
+    DATE_TIME_SELECT_TIME_LIST = (By.CSS_SELECTOR, "li.react-datepicker__time-list-item ")
