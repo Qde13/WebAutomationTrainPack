@@ -1,11 +1,13 @@
 import random
+import time
 
 from selenium.common import TimeoutException
 from selenium.webdriver import Keys
 from selenium.webdriver.support.select import Select
 
 from generator.genereator import generated_color, generated_date
-from locators.widget_page_locators import AccordianPageLocators, AutocompletePageLocators, DatePickerPageLocators
+from locators.widget_page_locators import AccordianPageLocators, AutocompletePageLocators, DatePickerPageLocators, \
+    SliderPageLocators, ProgressBarPageLocators
 from pages.base_page import BasePage
 
 
@@ -108,3 +110,28 @@ class DatePickerPage(BasePage):
             if item.text == value:
                 item.click()
                 break
+
+
+class SliderPage(BasePage):
+    locators = SliderPageLocators()
+
+    def change_slider_value(self):
+        value_before = self.element_is_visible(self.locators.SLIDER_VALUE).get_attribute('value')
+        slider_input = self.element_is_visible(self.locators.INPUT_SLIDER)
+        x_random = random.randint(26, 100) or random.randint(1, 24)
+        self.action_drag_and_drop_by_offset(slider_input, x_random, 0)
+        value_after = self.element_is_visible(self.locators.SLIDER_VALUE).get_attribute('value')
+        return value_before, value_after
+
+
+class ProgressBarPage(BasePage):
+    locators = ProgressBarPageLocators()
+
+    def change_progress_bar_value(self):
+        value_before = self.element_is_present(self.locators.PROGRESS_BAR_VALUE).text
+        progress_var_button = self.element_is_visible(self.locators.PROGRESS_BAR_BUTTON)
+        progress_var_button.click()
+        time.sleep(random.uniform(0.5, 3.0))
+        progress_var_button.click()
+        value_after = self.element_is_present(self.locators.PROGRESS_BAR_VALUE).text
+        return value_before, value_after
