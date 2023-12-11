@@ -1,4 +1,4 @@
-from pages.widget_page import AccordianPage, AutocompletePage, DatePickerPage, SliderPage, ProgressBarPage
+from pages.widget_page import AccordianPage, AutocompletePage, DatePickerPage, SliderPage, ProgressBarPage, TabsPage
 
 
 class TestWidgets:
@@ -88,3 +88,40 @@ class TestWidgets:
             before, after = progress_bar.change_progress_bar_value()
             assert before != after, "The value of the progress bar has not been changed"
 
+    class TestTabs:
+
+        def test_all_tabs(self, driver):
+            tabs_page = TabsPage(driver, "https://demoqa.com/tabs")
+            tabs_page.open()
+            what_tab, what_tab_content = tabs_page.check_tabs(1)
+            origin_tab, origin_tab_content = tabs_page.check_tabs(2)
+            use_tab, use_tab_content = tabs_page.check_tabs(3)
+            more_tab, more_tab_content = tabs_page.check_tabs(4)
+            assert what_tab == "What" and what_tab_content != 0, "The tab isn't present or not active"
+            assert origin_tab == "Origin" and origin_tab_content != 0, "The tab isn't present or not active"
+            assert use_tab == "Use" and use_tab_content != 0, "The tab isn't present or not active"
+            assert more_tab == "More" and more_tab_content != 0, "The tab isn't present or not active"
+
+        def test_what_tab(self, driver):
+            tabs_page = TabsPage(driver, "https://demoqa.com/tabs")
+            tabs_page.open()
+            what_tab, what_tab_content = tabs_page.check_tabs(1)
+            assert what_tab == "What" and len(what_tab_content) > 0, "The tab isn't present or not active"
+
+        def test_origin_tab(self, driver):
+            tabs_page = TabsPage(driver, "https://demoqa.com/tabs")
+            tabs_page.open()
+            origin_tab, origin_tab_content = tabs_page.check_tabs(2)
+            assert origin_tab == "Origin" and len(origin_tab_content) > 0, "The tab isn't present or not active"
+
+        def test_use_tab(self, driver):
+            tabs_page = TabsPage(driver, "https://demoqa.com/tabs")
+            tabs_page.open()
+            use_tab, use_tab_content = tabs_page.check_tabs(3)
+            assert use_tab == "Use" and len(use_tab_content) > 0, "The tab isn't present or not active"
+
+        def test_more_tab(self, driver):
+            tabs_page = TabsPage(driver, "https://demoqa.com/tabs")
+            tabs_page.open()
+            more_tab, more_tab_content = tabs_page.check_tabs(4)
+            assert more_tab == "More" and len(more_tab_content) > 0, "The tab isn't present or not active"
