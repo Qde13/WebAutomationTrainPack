@@ -57,3 +57,19 @@ class TabsPageLocators:
     MORE_TAB_CONTENT = (By.CSS_SELECTOR, "#demo-tabpane-more")
 
 
+class ToolTipsPageLocators:
+    BUTTON = (By.CSS_SELECTOR, "button#toolTipButton")
+    TOOL_TIP_BUTTON = (By.CSS_SELECTOR, "button[aria-describedby='buttonToolTip']")
+
+    FIELD = (By.CSS_SELECTOR, "input#toolTipTextField")
+    TOOL_TIP_FIELD = (By.CSS_SELECTOR, "input[aria-describedby='textFieldToolTip']")
+
+    LINK_CONTRARY = (By.XPATH, "//*[.='Contrary']")
+    TOOL_TIP_LINK_CONTRARY = (By.CSS_SELECTOR, "a[aria-describedby='contraryTexToolTip']")
+
+    LINK_NUMS = (By.XPATH, "//*[.='1.10.32']")
+    TOOL_TIP_LINK_NUMS = (By.CSS_SELECTOR, "a[aria-describedby='sectionToolTip']")
+
+    TOOL_TIPS_INNERS = (By.CSS_SELECTOR, "div[class='tooltip-inner']")
+
+

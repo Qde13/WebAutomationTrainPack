@@ -7,7 +7,7 @@ from selenium.webdriver.support.select import Select
 
 from generator.genereator import generated_color, generated_date
 from locators.widget_page_locators import AccordianPageLocators, AutocompletePageLocators, DatePickerPageLocators, \
-    SliderPageLocators, ProgressBarPageLocators, TabsPageLocators
+    SliderPageLocators, ProgressBarPageLocators, TabsPageLocators, ToolTipsPageLocators
 from pages.base_page import BasePage
 
 
@@ -154,4 +154,30 @@ class TabsPage(BasePage):
         button.click()
         content = self.element_is_visible(tabs[tab_index]['content']).text
         return [button.text, content]
+
+
+class ToolTipsPage(BasePage):
+    locators = ToolTipsPageLocators()
+
+    def get_text_from_tool_tip(self, hover_element, wait_elem):
+        element = self.element_is_visible(hover_element)
+        self.action_move_to_elem(element)
+        self.element_is_visible(wait_elem)
+        tool_tip_text = self.element_is_visible(self.locators.TOOL_TIPS_INNERS)
+        text = tool_tip_text.text
+        return text
+
+    def check_tool_tips(self, index):
+        tool_tips = {1: {'title': self.locators.BUTTON,
+                         'tool_tip': self.locators.TOOL_TIP_BUTTON},
+                     2: {'title': self.locators.FIELD,
+                         'tool_tip': self.locators.TOOL_TIP_FIELD},
+                     3: {'title': self.locators.LINK_CONTRARY,
+                         'tool_tip': self.locators.TOOL_TIP_LINK_CONTRARY},
+                     4: {'title': self.locators.LINK_NUMS,
+                         'tool_tip': self.locators.TOOL_TIP_LINK_NUMS},
+                     }
+        output = self.get_text_from_tool_tip(tool_tips[index]['title'],tool_tips[index]['tool_tip'])
+        return output
+
 
