@@ -62,7 +62,7 @@ class ToolTipsPageLocators:
     TOOL_TIP_BUTTON = (By.CSS_SELECTOR, "button[aria-describedby='buttonToolTip']")
 
     FIELD = (By.CSS_SELECTOR, "input#toolTipTextField")
-    TOOL_TIP_FIELD = (By.CSS_SELECTOR, "input[aria-describedby='textFieldToolTip']")
+    TOOL_TIP_FIELD = (By.CSS_SELECTOR, "#textFieldToolTip")
 
     LINK_CONTRARY = (By.XPATH, "//*[.='Contrary']")
     TOOL_TIP_LINK_CONTRARY = (By.CSS_SELECTOR, "a[aria-describedby='contraryTexToolTip']")
@@ -73,3 +73,5 @@ class ToolTipsPageLocators:
     TOOL_TIPS_INNERS = (By.CSS_SELECTOR, "div[class='tooltip-inner']")
 
 
+class MenuPageLocators:
+    MENU_ITEM_LIST = (By.CSS_SELECTOR, "ul[id='nav'] li a")

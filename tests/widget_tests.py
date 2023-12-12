@@ -1,5 +1,5 @@
 from pages.widget_page import AccordianPage, AutocompletePage, DatePickerPage, SliderPage, ProgressBarPage, TabsPage, \
-    ToolTipsPage
+    ToolTipsPage, MenuPage
 
 
 class TestWidgets:
@@ -151,3 +151,10 @@ class TestWidgets:
             tooltips_page.open()
             output = tooltips_page.check_tool_tips(4)
             assert output == 'You hovered over the 1.10.32', 'Hover tool-tip is missing or incorrect content'
+
+    class TestMenu:
+        def test_menu_items(self, driver):
+            menu_page = MenuPage(driver, "https://demoqa.com/menu")
+            menu_page.open()
+            output = menu_page.check_menu()
+            assert len(output) == 8, 'Menu items are missed'
