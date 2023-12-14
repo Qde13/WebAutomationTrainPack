@@ -1,5 +1,6 @@
 import random
 import time
+import keyboard
 
 from selenium.common import TimeoutException
 from selenium.webdriver import Keys
@@ -7,7 +8,8 @@ from selenium.webdriver.support.select import Select
 
 from generator.genereator import generated_color, generated_date
 from locators.widget_page_locators import AccordianPageLocators, AutocompletePageLocators, DatePickerPageLocators, \
-    SliderPageLocators, ProgressBarPageLocators, TabsPageLocators, ToolTipsPageLocators, MenuPageLocators
+    SliderPageLocators, ProgressBarPageLocators, TabsPageLocators, ToolTipsPageLocators, MenuPageLocators, \
+    SelectMenuPageLocators
 from pages.base_page import BasePage
 
 
@@ -177,7 +179,7 @@ class ToolTipsPage(BasePage):
                      4: {'title': self.locators.LINK_NUMS,
                          'tool_tip': self.locators.TOOL_TIP_LINK_NUMS},
                      }
-        output = self.get_text_from_tool_tip(tool_tips[index]['title'],tool_tips[index]['tool_tip'])
+        output = self.get_text_from_tool_tip(tool_tips[index]['title'], tool_tips[index]['tool_tip'])
         return output
 
 
@@ -191,3 +193,16 @@ class MenuPage(BasePage):
             self.action_move_to_elem(item)
             data.append(item.text)
         return data
+
+
+class SelectMenuPage(BasePage):
+    locators = SelectMenuPageLocators()
+
+    def check_select_value(self):
+        select_value_field = self.element_is_visible(self.locators.SELECT_OPTION)
+        select_value_field.click()
+        keyboard.write(Keys.ENTER)
+        return select_value_field.text
+
+
+

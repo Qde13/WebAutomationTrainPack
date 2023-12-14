@@ -1,5 +1,5 @@
 from pages.widget_page import AccordianPage, AutocompletePage, DatePickerPage, SliderPage, ProgressBarPage, TabsPage, \
-    ToolTipsPage, MenuPage
+    ToolTipsPage, MenuPage, SelectMenuPage
 
 
 class TestWidgets:
@@ -158,3 +158,12 @@ class TestWidgets:
             menu_page.open()
             output = menu_page.check_menu()
             assert len(output) == 8, 'Menu items are missed'
+
+# Need fix
+    class TestSelectMenu:
+        def test_select_value(self, driver):
+            select_menu = SelectMenuPage(driver, "https://demoqa.com/select-menu")
+            select_menu.open()
+            output = select_menu.check_select_value()
+            print(output)
+            assert False
