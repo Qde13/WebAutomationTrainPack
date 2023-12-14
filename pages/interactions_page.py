@@ -1,6 +1,8 @@
 import random
 
-from locators.interactions_page_locators import SortablePageLocators
+from selenium.common import TimeoutException
+
+from locators.interactions_page_locators import SortablePageLocators, SelectablePageLocators
 from pages.base_page import BasePage
 
 
@@ -30,4 +32,33 @@ class SortablePage(BasePage):
         self.action_drag_and_drop_to_element(item_what, item_where)
         order_after = self.get_sortable_item(self.locators.GRID_ITEM)
         return order_before, order_after
+
+
+class SelectablePage(BasePage):
+    locators = SelectablePageLocators()
+
+    def get_selectable_item(self, elements):
+        try:
+            item_list = self.elements_are_visible(elements, timeout=0.5)
+            return [item.text for item in item_list]
+        except TimeoutException:
+            return [""]
+
+    def click_selectable_item(self, elements):
+        item_list = self.elements_are_visible(elements)
+        random.sample(item_list, k=1)[0].click()
+
+    def select_list_items(self):
+        self.element_is_visible(self.locators.TAB_LIST).click()
+        selected_before = self.get_selectable_item(self.locators.LIST_ITEM_ACTIVE)
+        self.click_selectable_item(self.locators.LIST_ITEM)
+        selected_after = self.get_selectable_item(self.locators.LIST_ITEM_ACTIVE)
+        return selected_before, selected_after
+
+    def select_grid_items(self):
+        self.element_is_visible(self.locators.TAB_GRID).click()
+        selected_before = self.get_selectable_item(self.locators.GRID_ITEM_ACTIVE)
+        self.click_selectable_item(self.locators.GRID_ITEM)
+        selected_after = self.get_selectable_item(self.locators.GRID_ITEM_ACTIVE)
+        return selected_before, selected_after
 

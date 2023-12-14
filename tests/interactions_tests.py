@@ -1,4 +1,4 @@
-from pages.interactions_page import SortablePage
+from pages.interactions_page import SortablePage, SelectablePage
 
 
 class TestInteractions:
@@ -23,4 +23,24 @@ class TestInteractions:
             assert before_list != after_list, "the order of the list has not been changed"
             assert before_grid != after_grid, "the order of the grid has not been changed"
 
+    class TestSelectable:
+        def test_selectable_list(self, driver):
+            selectable_page = SelectablePage(driver, "https://demoqa.com/selectable")
+            selectable_page.open()
+            before, after = selectable_page.select_list_items()
+            assert before != after
+
+        def test_selectable_grid(self, driver):
+            selectable_page = SelectablePage(driver, "https://demoqa.com/selectable")
+            selectable_page.open()
+            before, after = selectable_page.select_grid_items()
+            assert before != after
+
+        def test_selectable_one_by_one(self, driver):
+            selectable_page = SelectablePage(driver, "https://demoqa.com/selectable")
+            selectable_page.open()
+            before_list, after_list = selectable_page.select_list_items()
+            before_grid, after_grid = selectable_page.select_grid_items()
+            assert before_list != after_list
+            assert before_grid != after_grid
 
