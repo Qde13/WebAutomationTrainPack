@@ -26,6 +26,26 @@ class ResizablePageLocators:
 
 
 class DroppablePageLocators:
-    DRAGGABLE = (By.CSS_SELECTOR, "#draggable")
-    DROPPABLE = (By.CSS_SELECTOR, "#droppable")
+    SIMPLE_TAB = (By.CSS_SELECTOR, "#droppableExample-tab-simple")
+    SIMPLE_DRAG = (By.CSS_SELECTOR, "#draggable")
+    SIMPLE_DROP_HERE = (By.CSS_SELECTOR, "#simpleDropContainer #droppable")
+
+    ACCEPT_TAB = (By.CSS_SELECTOR, "#droppableExample-tab-accept")
+    ACCEPTABLE_DRAG = (By.CSS_SELECTOR, "#acceptable")
+    NOT_ACCEPTABLE_DRAG = (By.CSS_SELECTOR, "#notAcceptable")
+    ACCEPTABLE_DROP_HERE = (By.CSS_SELECTOR, "#acceptDropContainer #droppable")
+
+    PREVENT_PROPOGATION_TAB = (By.CSS_SELECTOR, "#droppableExample-tab-preventPropogation")
+    PREVENT_PROPOGATION_DRAG = (By.CSS_SELECTOR, "#dragBox")
+    PREVENT_PROPOGATION_OUTER_DROP_NOT_GREEDY = (By.CSS_SELECTOR, "#notGreedyDropBox")
+    PREVENT_PROPOGATION_INNER_DROP_NOT_GREEDY = (By.CSS_SELECTOR, "#notGreedyInnerDropBox")
+    PREVENT_PROPOGATION_OUTER_DROP_GREEDY = (By.CSS_SELECTOR, "#greedyDropBox")
+    PREVENT_PROPOGATION_INNER_DROP_GREEDY = (By.CSS_SELECTOR, "#greedyDropBoxInner")
+
+    REVERT_DRAGGABLE_TAB = (By.CSS_SELECTOR, "#droppableExample-tab-revertable")
+    WILL_REVERT_DRAG = (By.CSS_SELECTOR, "#revertable")
+    NOT_REVERT_DRAG = (By.CSS_SELECTOR, "#notRevertable")
+    REVERT_DRAGGABLE_DROP_HERE = (By.CSS_SELECTOR, "#revertableDropContainer #droppable")
+
+
 

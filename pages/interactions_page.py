@@ -1,4 +1,5 @@
 import random
+import time
 
 from selenium.common import TimeoutException
 
@@ -97,4 +98,56 @@ class ResizablePage(BasePage):
 class DroppablePage(BasePage):
     locators = DroppablePageLocators()
 
+    def check_that_tab_is_selected(self, tab_element):
+        tab = self.element_is_visible(tab_element)
+        if tab.get_attribute('aria-selected') != 'true':
+            tab.click()
+
+    def check_simple_draggable(self):
+        self.check_that_tab_is_selected(self.locators.SIMPLE_TAB)
+        drag = self.element_is_visible(self.locators.SIMPLE_DRAG)
+        drop = self.element_is_visible(self.locators.SIMPLE_DROP_HERE)
+        before = drop.text
+        self.action_drag_and_drop_to_element(drag, drop)
+        after = drop.text
+        return before, after
+
+    def check_accept_draggable(self):
+        self.check_that_tab_is_selected(self.locators.ACCEPT_TAB)
+        acceptable_drag = self.element_is_visible(self.locators.ACCEPTABLE_DRAG)
+        not_acceptable_drag = self.element_is_visible(self.locators.NOT_ACCEPTABLE_DRAG)
+        drop = self.element_is_visible(self.locators.ACCEPTABLE_DROP_HERE)
+        self.action_drag_and_drop_to_element(not_acceptable_drag, drop)
+        after_false_drop = drop.text
+        self.action_drag_and_drop_to_element(acceptable_drag, drop)
+        after_true_drop = drop.text
+        return after_false_drop, after_true_drop
+
+    def check_prevent_propogation_draggable(self):
+        self.check_that_tab_is_selected(self.locators.PREVENT_PROPOGATION_TAB)
+        drag = self.element_is_visible(self.locators.PREVENT_PROPOGATION_DRAG)
+        outer_drop_not_greedy = self.element_is_visible(
+            self.locators.PREVENT_PROPOGATION_OUTER_DROP_NOT_GREEDY)
+        inner_drop_not_greedy = self.element_is_visible(self.locators.PREVENT_PROPOGATION_INNER_DROP_NOT_GREEDY)
+        self.action_drag_and_drop_to_element(drag, inner_drop_not_greedy)
+        outer_drop_greedy = self.element_is_visible(self.locators.PREVENT_PROPOGATION_OUTER_DROP_GREEDY)
+        inner_drop_greedy = self.element_is_visible(self.locators.PREVENT_PROPOGATION_INNER_DROP_GREEDY)
+        self.action_drag_and_drop_to_element(drag, inner_drop_greedy)
+        return outer_drop_not_greedy.text.split('\n')[0], outer_drop_greedy.text.split('\n')[0]
+
+    def check_revert_draggable(self, draggable_type):
+        draggable = {
+            'will':
+                {'revert': self.locators.WILL_REVERT_DRAG, },
+            'not_will':
+                {'revert': self.locators.NOT_REVERT_DRAG, },
+        }
+        self.check_that_tab_is_selected(self.locators.REVERT_DRAGGABLE_TAB)
+        revert = self.element_is_visible(draggable[draggable_type]['revert'])
+        drop = self.element_is_visible(self.locators.REVERT_DRAGGABLE_DROP_HERE)
+        self.action_drag_and_drop_to_element(revert, drop)
+        position_after_move = revert.get_attribute('style')
+        time.sleep(1)
+        position_after_revert = revert.get_attribute('style')
+        return position_after_move, position_after_revert
 

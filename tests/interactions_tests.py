@@ -62,17 +62,32 @@ class TestInteractions:
         def test_simple_droppable(self, driver):
             droppable_page = DroppablePage(driver, "https://demoqa.com/droppable")
             droppable_page.open()
+            before, after = droppable_page.check_simple_draggable()
+            assert after == 'Dropped!', "The element has not been dropped"
 
         def test_accept_droppable(self, driver):
             droppable_page = DroppablePage(driver, "https://demoqa.com/droppable")
             droppable_page.open()
+            after_false, after_true = droppable_page.check_accept_draggable()
+            assert after_false == 'Drop here', "The element has been dropped"
+            assert after_true == 'Dropped!', "The element has not been dropped"
 
         def test_prevent_propogation_droppable(self, driver):
             droppable_page = DroppablePage(driver, "https://demoqa.com/droppable")
             droppable_page.open()
+            not_greedy, greedy = droppable_page.check_prevent_propogation_draggable()
+            assert not_greedy == 'Dropped!', "The element has not been dropped"
+            assert greedy != 'Dropped!', "The element has been dropped"
 
-        def test_revert_draggable_droppable(self, driver):
+        def test_will_revert_draggable_droppable(self, driver):
             droppable_page = DroppablePage(driver, "https://demoqa.com/droppable")
             droppable_page.open()
+            after_move, after_revert = droppable_page.check_revert_draggable('will')
+            assert after_move != after_revert, "The element has not been revert"
 
+        def test_not_will_revert_draggable_droppable(self, driver):
+            droppable_page = DroppablePage(driver, "https://demoqa.com/droppable")
+            droppable_page.open()
+            after_move, after_revert = droppable_page.check_revert_draggable('not_will')
+            assert after_move == after_revert, "The element has been revert"
 
