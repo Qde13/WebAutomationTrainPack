@@ -18,7 +18,7 @@ class SelectablePageLocators:
 
 
 class ResizablePageLocators:
-    RESIZABLE_BOX_HANDLE = (By.CSS_SELECTOR, "div#resizableBoxWithRestriction" 
+    RESIZABLE_BOX_HANDLE = (By.CSS_SELECTOR, "div#resizableBoxWithRestriction"
                                              " span[class='react-resizable-handle react-resizable-handle-se']")
     RESIZABLE_BOX = (By.CSS_SELECTOR, "div#resizableBoxWithRestriction")
     RESIZABLE_HANDLE = (By.CSS_SELECTOR, "div#resizable span[class='react-resizable-handle react-resizable-handle-se']")
@@ -47,5 +47,23 @@ class DroppablePageLocators:
     NOT_REVERT_DRAG = (By.CSS_SELECTOR, "#notRevertable")
     REVERT_DRAGGABLE_DROP_HERE = (By.CSS_SELECTOR, "#revertableDropContainer #droppable")
 
+
+class DraggablePageLocators:
+    SIMPLE_TAB = (By.CSS_SELECTOR, "#draggableExample-tab-simple")
+    SIMPLE_DRAG_ME = (By.CSS_SELECTOR, "#dragBox")
+
+    AXIS_RESTRICTED_TAB = (By.CSS_SELECTOR, "#draggableExample-tab-axisRestriction")
+    AXIS_RESTRICTED_ONLY_X_DRAG = (By.CSS_SELECTOR, "#restrictedX")
+    AXIS_RESTRICTED_ONLY_Y_DRAG = (By.CSS_SELECTOR, "#restrictedY")
+
+    CONTAINER_RESTRICTED_TAB = (By.CSS_SELECTOR, "#draggableExample-tab-containerRestriction")
+    CONTAINER_RESTRICTED_DRAG_BOX = (By.CSS_SELECTOR,
+                                     "div[class='draggable ui-widget-content ui-draggable ui-draggable-handle']")
+    CONTAINER_RESTRICTED_DRAG_SPAN = (By.CSS_SELECTOR, "span[class='ui-widget-header ui-draggable ui-draggable-handle']")
+
+    CURSOR_STYLE_TAB = (By.CSS_SELECTOR, "#draggableExample-tab-cursorStyle")
+    CURSOR_STYLE_CURSOR_CENTER = (By.CSS_SELECTOR, "#cursorCenter")
+    CURSOR_STYLE_CURSOR_TOP_LEFT = (By.CSS_SELECTOR, "#cursorTopLeft")
+    CURSOR_STYLE_CURSOR_BOTTOM = (By.CSS_SELECTOR, "#cursorBottom")
 
 

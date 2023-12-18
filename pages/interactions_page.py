@@ -4,7 +4,7 @@ import time
 from selenium.common import TimeoutException
 
 from locators.interactions_page_locators import SortablePageLocators, SelectablePageLocators, ResizablePageLocators, \
-    DroppablePageLocators
+    DroppablePageLocators, DraggablePageLocators
 from pages.base_page import BasePage
 
 
@@ -151,3 +151,32 @@ class DroppablePage(BasePage):
         position_after_revert = revert.get_attribute('style')
         return position_after_move, position_after_revert
 
+
+class DraggablePage(BasePage):
+    locators = DraggablePageLocators()
+
+    def check_that_tab_is_selected(self, tab_element):
+        tab = self.element_is_visible(tab_element)
+        if tab.get_attribute('aria-selected') != 'true':
+            tab.click()
+
+    def get_before_and_after_position(self, drag_element):
+        self.action_drag_and_drop_by_offset(drag_element, random.randint(0, 50), random.randint(0, 50))
+        before_position = drag_element.get_attribute('style')
+        self.action_drag_and_drop_by_offset(drag_element, random.randint(0, 50), random.randint(0, 50))
+        after_position = drag_element.get_attribute('style')
+        return before_position, after_position
+
+    def check_simple_drag_box(self):
+        self.check_that_tab_is_selected(self.locators.SIMPLE_TAB)
+        drag = self.element_is_visible(self.locators.SIMPLE_DRAG_ME)
+        before, after = self.get_before_and_after_position(drag)
+        return before, after
+
+    def check_axis_restricted(self):
+        self.check_that_tab_is_selected(self.locators.AXIS_RESTRICTED_TAB)
+        only_x_drag = self.element_is_visible(self.locators.AXIS_RESTRICTED_ONLY_X_DRAG)
+        only_y_drag = self.element_is_visible(self.locators.AXIS_RESTRICTED_ONLY_Y_DRAG)
+        before_x, after_x = self.get_before_and_after_position(only_x_drag)
+        before_y, after_y = self.get_before_and_after_position(only_y_drag)
+        return before_x, after_x, before_y, after_y
