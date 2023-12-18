@@ -1,5 +1,4 @@
 import os
-import time
 
 from selenium.webdriver import Keys
 
@@ -47,7 +46,8 @@ class FormPage(BasePage):
         current_address.send_keys(current_address_data)
         submit.click()
 
-        data = [f"{firstname} {lastname}", email_data, gender_data, phone_number, current_address_data.replace("\n", " ")]
+        data = [f"{firstname} {lastname}", email_data, gender_data, phone_number,
+                current_address_data.replace("\n", " ")]
         return data[:4]
 
     def form_result(self):

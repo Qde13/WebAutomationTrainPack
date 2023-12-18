@@ -38,7 +38,6 @@ def generated_color():
 
 
 def generated_date():
-
     def gen_time():
         h = random.randint(0, 24)
         m = random.randrange(0, 60, 15)

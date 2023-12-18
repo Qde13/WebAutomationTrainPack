@@ -128,25 +128,25 @@ class TestWidgets:
             assert more_tab == "More" and len(more_tab_content) > 0, "The tab isn't present or not active"
 
     class TestToolTips:
-        def test_button_tooltip(self,driver):
+        def test_button_tooltip(self, driver):
             tooltips_page = ToolTipsPage(driver, "https://demoqa.com/tool-tips")
             tooltips_page.open()
             output = tooltips_page.check_tool_tips(1)
             assert output == 'You hovered over the Button', 'Hover tool-tip is missing or incorrect content'
 
-        def test_input_field_tooltip(self,driver):
+        def test_input_field_tooltip(self, driver):
             tooltips_page = ToolTipsPage(driver, "https://demoqa.com/tool-tips")
             tooltips_page.open()
             output = tooltips_page.check_tool_tips(2)
             assert output == 'You hovered over the text field', 'Hover tool-tip is missing or incorrect content'
 
-        def test_link_contrary_tooltip(self,driver):
+        def test_link_contrary_tooltip(self, driver):
             tooltips_page = ToolTipsPage(driver, "https://demoqa.com/tool-tips")
             tooltips_page.open()
             output = tooltips_page.check_tool_tips(3)
             assert output == 'You hovered over the Contrary', 'Hover tool-tip is missing or incorrect content'
 
-        def test_link_section_tooltip(self,driver):
+        def test_link_section_tooltip(self, driver):
             tooltips_page = ToolTipsPage(driver, "https://demoqa.com/tool-tips")
             tooltips_page.open()
             output = tooltips_page.check_tool_tips(4)
@@ -159,7 +159,7 @@ class TestWidgets:
             output = menu_page.check_menu()
             assert len(output) == 8, 'Menu items are missed'
 
-# Need fix
+    # Need fix
     class TestSelectMenu:
         def test_select_value(self, driver):
             select_menu = SelectMenuPage(driver, "https://demoqa.com/select-menu")

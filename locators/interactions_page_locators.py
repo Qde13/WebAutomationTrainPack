@@ -59,11 +59,10 @@ class DraggablePageLocators:
     CONTAINER_RESTRICTED_TAB = (By.CSS_SELECTOR, "#draggableExample-tab-containerRestriction")
     CONTAINER_RESTRICTED_DRAG_BOX = (By.CSS_SELECTOR,
                                      "div[class='draggable ui-widget-content ui-draggable ui-draggable-handle']")
-    CONTAINER_RESTRICTED_DRAG_SPAN = (By.CSS_SELECTOR, "span[class='ui-widget-header ui-draggable ui-draggable-handle']")
+    CONTAINER_RESTRICTED_DRAG_SPAN = (By.CSS_SELECTOR,
+                                      "span[class='ui-widget-header ui-draggable ui-draggable-handle']")
 
     CURSOR_STYLE_TAB = (By.CSS_SELECTOR, "#draggableExample-tab-cursorStyle")
     CURSOR_STYLE_CURSOR_CENTER = (By.CSS_SELECTOR, "#cursorCenter")
     CURSOR_STYLE_CURSOR_TOP_LEFT = (By.CSS_SELECTOR, "#cursorTopLeft")
     CURSOR_STYLE_CURSOR_BOTTOM = (By.CSS_SELECTOR, "#cursorBottom")
-
-

@@ -2,7 +2,6 @@ from selenium.webdriver.common.by import By
 
 
 class TextBoxPageLocators:
-
     # form fields
     FULL_NAME = (By.CSS_SELECTOR, "#userName")
     EMAIL = (By.CSS_SELECTOR, "#userEmail")
@@ -18,7 +17,6 @@ class TextBoxPageLocators:
 
 
 class CheckBoxPageLocators:
-
     EXPAND_ALL_BUTTON = (By.CSS_SELECTOR, "button[title='Expand all']")
     ITEM_LIST = (By.CSS_SELECTOR, "span[class='rct-title']")
     CHECKED_ITEMS = (By.CSS_SELECTOR, "svg[class='rct-icon rct-icon-check']")
@@ -27,7 +25,6 @@ class CheckBoxPageLocators:
 
 
 class RadioButtonPageLocators:
-
     YES_BUTTON = (By.CSS_SELECTOR, "label[class^='custom-control'][for='yesRadio']")
     IMPRESSIVE_BUTTON = (By.CSS_SELECTOR, "label[class^='custom-control'][for='impressiveRadio']")
     NO_BUTTON = (By.CSS_SELECTOR, "label[class^='custom-control'][for='noRadio']")
@@ -35,7 +32,6 @@ class RadioButtonPageLocators:
 
 
 class WebTablePageLocators:
-
     # Add and Edit person form
     ADD_BUTTON = (By.CSS_SELECTOR, "button[id='addNewRecordButton']")
     EDIT_BUTTON = (By.CSS_SELECTOR, "span[title='Edit']")
@@ -83,5 +79,3 @@ class DynamicPropertiesPageLocators:
     COLOR_CHANGE_BUTTON = (By.CSS_SELECTOR, "button#colorChange")
     VISIBLE_AFTER_FIVE_SEC_BUTTON = (By.CSS_SELECTOR, "button#visibleAfter")
     WILL_ENABLE_FIVE_SEC_BUTTON = (By.CSS_SELECTOR, "button#enableAfter")
-
-

@@ -2,7 +2,6 @@ from selenium.webdriver.common.by import By
 
 
 class BrowserWindowsPageLocators:
-
     NEW_TAB_BUTTON = (By.CSS_SELECTOR, "#tabButton")
     NEW_WINDOW_BUTTON = (By.CSS_SELECTOR, "#windowButton")
 
@@ -10,7 +9,6 @@ class BrowserWindowsPageLocators:
 
 
 class AlertPageLocators:
-
     # Alert buttons
     AlERT_APPEAR_BUTTON = (By.CSS_SELECTOR, "#alertButton")
     ALERT_APPEAR_AFTER_FIVE_SEC_BUTTON = (By.CSS_SELECTOR, "#timerAlertButton")
@@ -23,7 +21,6 @@ class AlertPageLocators:
 
 
 class FramePageLocators:
-
     FIRST_FRAME = (By.CSS_SELECTOR, "iframe#frame1")
     SECOND_FRAME = (By.CSS_SELECTOR, "iframe#frame2")
 
@@ -31,7 +28,6 @@ class FramePageLocators:
 
 
 class NestedFramePageLocators:
-
     PARENT_FRAME = (By.CSS_SELECTOR, "iframe#frame1")
     PARENT_TEXT = (By.CSS_SELECTOR, "body")
 

@@ -4,6 +4,7 @@ import time
 from locators.alert_frame_windows_locators import BrowserWindowsPageLocators, AlertPageLocators, FramePageLocators, \
     NestedFramePageLocators, ModelDialogPageLocators
 from pages.base_page import BasePage
+from selenium.common.exceptions import UnexpectedAlertPresentException
 
 
 class BrowserWindowsPage(BasePage):
@@ -36,7 +37,7 @@ class AlertPage(BasePage):
         try:
             alert_window = self.driver.switch_to.alert
             return alert_window.text
-        except UnexpectedAlertPresentExeption:
+        except UnexpectedAlertPresentException:
             alert_window = self.driver.switch_to.alert
             return alert_window.text
 

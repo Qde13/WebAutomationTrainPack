@@ -203,6 +203,3 @@ class SelectMenuPage(BasePage):
         select_value_field.click()
         keyboard.write(Keys.ENTER)
         return select_value_field.text
-
-
-
