@@ -23,3 +23,9 @@ class ResizablePageLocators:
     RESIZABLE_BOX = (By.CSS_SELECTOR, "div#resizableBoxWithRestriction")
     RESIZABLE_HANDLE = (By.CSS_SELECTOR, "div#resizable span[class='react-resizable-handle react-resizable-handle-se']")
     RESIZABLE = (By.CSS_SELECTOR, "div#resizable")
+
+
+class DroppablePageLocators:
+    DRAGGABLE = (By.CSS_SELECTOR, "#draggable")
+    DROPPABLE = (By.CSS_SELECTOR, "#droppable")
+
