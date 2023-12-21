@@ -12,4 +12,4 @@
 
 
 <h3>Last test run result:</h3>
-![img.png](img.png)
+![last_run.JPG](..%2F..%2FUsers%2Fabram%2FDesktop%2Flast_run.JPG)
