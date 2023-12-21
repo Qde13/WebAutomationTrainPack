@@ -12,4 +12,4 @@
 
 
 <h3>Last test run result:</h3>
-![You can see the results of the latest wound test in the screenshot at this link](https://github.com/Qde13/WebAutomationTrainPack/tree/master/test-results/allure_results/last_test_run.JPG)
+![You can see the results of the latest wound test in the screenshot at this link](https://github.com/Qde13/WebAutomationTrainPack/blob/master/test-results/last_test_run.JPG)
