@@ -1,0 +1,2 @@
+input: ['commands','react','veu','classified','general','downloads','wordfile','excelfile']
+output: ['commands','react','veu','classified','general','downloads','wordfile','excelfile']

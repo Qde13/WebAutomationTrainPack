@@ -35,12 +35,12 @@ class NestedFramePageLocators:
     CHILD_TEXT = (By.CSS_SELECTOR, "p")
 
 
-class ModelDialogPageLocators:
+class ModalDialogPageLocators:
     # Buttons
-    SMALL_MODEL_BUTTON = (By.CSS_SELECTOR, "button#showSmallModal")
-    LARGE_MODEL_BUTTON = (By.CSS_SELECTOR, "button#showLargeModal")
-    CLOSE_SMALL_MODEL = (By.CSS_SELECTOR, "#closeSmallModal")
-    CLOSE_LARGE_MODEL = (By.CSS_SELECTOR, "#closeLargeModal")
+    SMALL_MODAL_BUTTON = (By.CSS_SELECTOR, "button#showSmallModal")
+    LARGE_MODAL_BUTTON = (By.CSS_SELECTOR, "button#showLargeModal")
+    CLOSE_SMALL_MODAL = (By.CSS_SELECTOR, "#closeSmallModal")
+    CLOSE_LARGE_MODAL = (By.CSS_SELECTOR, "#closeLargeModal")
     # Text
-    MODEL_HEADER = (By.CSS_SELECTOR, "div[class='modal-title h4']")
-    MODEL_BODY = (By.CSS_SELECTOR, ".modal-body")
+    MODAL_HEADER = (By.CSS_SELECTOR, "div[class='modal-title h4']")
+    MODAL_BODY = (By.CSS_SELECTOR, ".modal-body")

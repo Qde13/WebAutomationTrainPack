@@ -75,16 +75,3 @@ class ToolTipsPageLocators:
 
 class MenuPageLocators:
     MENU_ITEM_LIST = (By.CSS_SELECTOR, "ul[id='nav'] li a")
-
-
-class SelectMenuPageLocators:
-    SELECT_OPTION = (By.CSS_SELECTOR, "#withOptGroup div.css-1hwfws3")
-    SELECT_ITEM_LIST = (By.CSS_SELECTOR, "div.css-2613qy-menu")
-
-    SELECT_TITLE = (By.CSS_SELECTOR, "#selectOne")
-
-    OLD_STYLE_SELECT = (By.CSS_SELECTOR, "#oldSelectMenu")
-
-    SELECT_MULTY_LIST = (By.CSS_SELECTOR, "div.css-1hwfws3")  # Choose 3d item to locate Color Select
-
-    MULTY_SELECT_LIST = (By.CSS_SELECTOR, "#cars option")

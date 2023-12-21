@@ -24,10 +24,9 @@ def generated_person():
 
 
 def generated_file():
-    filepath = rf"D:\PythonProjects\WebAutomationTrainPack\testfile{random.randint(0, 999)}.txt"
-    file = open(filepath, "w+")
-    file.write("some text")
-    file.close()
+    filepath = rf"C:\PythonProjects\WebAutomationFramework\testfile{random.randint(0, 999)}.txt"
+    with open(filepath, "w+") as file:
+        file.write("some text")
     return filepath
 
 

@@ -149,7 +149,7 @@ class DroppablePage(BasePage):
         position_after_move = revert.get_attribute('style')
         time.sleep(1)
         position_after_revert = revert.get_attribute('style')
-        return position_after_move, position_after_revert
+        return position_after_move.split(";"), position_after_revert.split(";")
 
 
 class DraggablePage(BasePage):

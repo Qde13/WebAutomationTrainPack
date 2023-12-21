@@ -2,7 +2,7 @@ import random
 import time
 
 from locators.alert_frame_windows_locators import BrowserWindowsPageLocators, AlertPageLocators, FramePageLocators, \
-    NestedFramePageLocators, ModelDialogPageLocators
+    NestedFramePageLocators, ModalDialogPageLocators
 from pages.base_page import BasePage
 from selenium.common.exceptions import UnexpectedAlertPresentException
 
@@ -28,8 +28,12 @@ class AlertPage(BasePage):
 
     def check_alert_appear(self):
         self.element_is_visible(self.locators.AlERT_APPEAR_BUTTON).click()
-        alert_window = self.driver.switch_to.alert
-        return alert_window.text
+        try:
+            alert_window = self.driver.switch_to.alert
+            return alert_window.text
+        except UnexpectedAlertPresentException:
+            alert_window = self.driver.switch_to.alert
+            return alert_window.text
 
     def check_alert_appear_five_sec(self):
         self.element_is_visible(self.locators.ALERT_APPEAR_AFTER_FIVE_SEC_BUTTON).click()
@@ -101,22 +105,22 @@ class NestedFramePage(BasePage):
         return output
 
 
-class ModelDialogPage(BasePage):
-    locators = ModelDialogPageLocators()
+class ModalDialogPage(BasePage):
+    locators = ModalDialogPageLocators()
 
     def open_small_dialog(self):
-        self.element_is_present(self.locators.SMALL_MODEL_BUTTON).click()
+        self.element_is_present(self.locators.SMALL_MODAL_BUTTON).click()
 
     def open_large_dialog(self):
-        self.element_is_present(self.locators.LARGE_MODEL_BUTTON).click()
+        self.element_is_present(self.locators.LARGE_MODAL_BUTTON).click()
 
     def close_small_dialog(self):
-        self.element_is_visible(self.locators.CLOSE_SMALL_MODEL).click()
+        self.element_is_visible(self.locators.CLOSE_SMALL_MODAL).click()
 
     def close_large_dialog(self):
-        self.element_is_visible(self.locators.CLOSE_LARGE_MODEL).click()
+        self.element_is_visible(self.locators.CLOSE_LARGE_MODAL).click()
 
     def get_model_header_body_text(self):
-        header_text, body_text = (self.element_is_visible(self.locators.MODEL_HEADER).text,
-                                  self.element_is_visible(self.locators.MODEL_BODY).text)
+        header_text, body_text = (self.element_is_visible(self.locators.MODAL_HEADER).text,
+                                  self.element_is_visible(self.locators.MODAL_BODY).text)
         return header_text, body_text
